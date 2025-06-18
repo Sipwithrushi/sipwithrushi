@@ -1,20 +1,45 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SipWithRushi</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>SipWithRushi – AI Wine Guide</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="app">
-    <h1>Welcome to SipWithRushi 🍷</h1>
-    <p>Your AI-powered wine suggestion app.</p>
-    <input type="text" placeholder="Type a wine name..." />
-    <button>Get AI Suggestion</button>
-    <div class="suggestion-box">
-      <!-- AI suggestion output -->
-    </div>
+  <div class="container">
+    <h1>🍷 Welcome to SipWithRushi</h1>
+    <p>Your Personal AI Wine Pairing Companion</p>
+
+    <input id="foodInput" type="text" placeholder="Enter food (e.g. Paneer Tikka)" />
+    <button onclick="suggestWine()">Suggest Wine</button>
+
+    <div id="result" class="card"></div>
   </div>
+
+  <footer>
+    <p>Made with ❤️ by Rushi | © 2025 SipWithRushi</p>
+  </footer>
+
+  <script>
+    function suggestWine() {
+      const input = document.getElementById("foodInput").value.toLowerCase();
+      const result = document.getElementById("result");
+      let wine = "Try a refreshing white wine!";
+
+      if (input.includes("paneer") || input.includes("butter")) {
+        wine = "🧀 Suggested: Chardonnay or Riesling";
+      } else if (input.includes("chicken")) {
+        wine = "🍗 Suggested: Sauvignon Blanc or Pinot Noir";
+      } else if (input.includes("mutton") || input.includes("red meat")) {
+        wine = "🍖 Suggested: Cabernet Sauvignon or Shiraz";
+      } else if (input.trim() === "") {
+        wine = "⚠️ Please enter a food item.";
+      }
+
+      result.innerText = wine;
+    }
+  </script>
 </body>
 </html>
